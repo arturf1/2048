@@ -1,0 +1,65 @@
+{
+    "Play2048": {
+        "checkpoints": [
+            {
+                "steps": 11499809,
+                "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-11499809.onnx",
+                "reward": 646.3448275862069,
+                "creation_time": 1628805560.371193,
+                "auxillary_file_paths": [
+                    "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-11499809.pt"
+                ]
+            },
+            {
+                "steps": 11999738,
+                "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-11999738.onnx",
+                "reward": 555.8181818181819,
+                "creation_time": 1628807822.1756883,
+                "auxillary_file_paths": [
+                    "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-11999738.pt"
+                ]
+            },
+            {
+                "steps": 12499469,
+                "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-12499469.onnx",
+                "reward": 546.4242424242424,
+                "creation_time": 1628810541.8178527,
+                "auxillary_file_paths": [
+                    "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-12499469.pt"
+                ]
+            },
+            {
+                "steps": 12999817,
+                "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-12999817.onnx",
+                "reward": 509.3333333333333,
+                "creation_time": 1628813217.201115,
+                "auxillary_file_paths": [
+                    "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-12999817.pt"
+                ]
+            },
+            {
+                "steps": 13360106,
+                "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-13360106.onnx",
+                "reward": 607.9230769230769,
+                "creation_time": 1628814637.5409591,
+                "auxillary_file_paths": [
+                    "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-13360106.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 13360106,
+            "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048.onnx",
+            "reward": 607.9230769230769,
+            "creation_time": 1628814637.5409591,
+            "auxillary_file_paths": [
+                "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-13360106.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.27.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}
