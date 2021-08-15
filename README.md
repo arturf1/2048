@@ -71,25 +71,34 @@ This agent is called deterLocDeterValwNormMask. Below is the command used to tra
 
 ## Agent for 2048
 
-### Complex Rewards 
+First let's observe that the original version of 2048 is much harder. We can see that from the training curves below. The agent managed to reach much higher average reward much faster on the simplified version.   
 
-Agent training curve for simplified 2048 (grey). 
-Fine tuning that agent on original 2048 (orange). 
-The original version is much harder. 
+| Curve Color        | Description           | Run Id / Agent Name |
+| ------------- |-------------| -----|
+| Grey      | Agent training curve for simplified 2048 | deterLocDeterValwNormMask |
+| Orange      | Fine tuning that agent on original 2048     |   rndLocRndValwNormMask |
 
 ![Simplified versus Original 2048 Training Curves](Recordings/2048_deterLocDeterValwNormMask-vs-rndLocRndValwNormMask_training.PNG)
 
-rndLocRndValwNormMaskColdStart\Play2048
+### Complex Rewards 
+
+The first question I had when moving to the original version of 2048 was whether it was advantageous to fine tune the agent trained on simplified 2048. It turns out that the pre-trained version does perform better initially. After a while, agent trained from scratch (rndLocRndValwNormMaskColdStart) and a fine-tuned agent (rndLocRndValwNormMask) have about the same training curve. They converge onto the same strategy. They both move highest value tiles to one side.
+
+Below is the training command as well as the training curve for the cold start agent. Note: before training be sure that you have uncommented the desired reward function in Agent2048.cs as well set the desired game configuration in Unity Editor. 
 
 ```sh
    mlagents-learn config/trainer.yaml --run-id=rndLocRndValwNormMaskColdStart
    ```
-   
-Agent trained from scratch and a fine-tuned agent converge onto the same strategy. They both move highest value tiles to one side.
-Grey: training on simplified 2048  
-Orange: fine tuning on original 2048 
-Blue: training agent on original 2048 
+
+| Curve Color        | Description           | Run Id / Agent Name |
+| ------------- |-------------| -----|
+| Blue | Training agent on original 2048      |    rndLocRndValwNormMaskColdStart |
+| Orange      | Fine tuning on original 2048      |   rndLocRndValwNormMask |
+| Grey      | Training on simplified 2048 | deterLocDeterValwNormMask |
+
 ![Cold Start versus Fine Tune](Recordings/2048_coldstart_vs_finetune.PNG)
+
+Since the cold start and pre-trained agents eventually learned at the same rate, I decided to continue training the pre-trained agent. In total there were 3 runs of training. The commands and curves for these rounds are below. These runs are called rndLocRndValwNormMask, rndLocRndValwNormMask_2, and rndLocRndValwNormMask_3. 
 
 ```sh
    mlagents-learn config/trainer.yaml --run-id=rndLocRndValwNormMask --initialize-from=deterLocDeterValwNormMask
@@ -100,18 +109,16 @@ Blue: training agent on original 2048
 ```sh
    mlagents-learn config/trainer_3.yaml --run-id=rndLocRndValwNormMask_3 --initialize-from=rndLocRndValwNormMask_2
    ```
-rndLocRndValwNormMask\Play2048
-rndLocRndValwNormMask_2\Play2048
-rndLocRndValwNormMask_3\Play2048
 
-Training curves for fine tuning an agent to play 2048.  
-Orange: First round  33M steps
-Red: Second round 50M steps
-Blue: Third round 12M steps
+| Curve Color        | Description           | Run Id / Agent Name |
+| ------------- |-------------| -----|
+| Orange      | First run  33M steps | rndLocRndValwNormMask |
+| Red      | Second run 50M steps      |   rndLocRndValwNormMask_2 |
+| Blue | Third run 12M steps      |    rndLocRndValwNormMask_3 |
+
 ![Agent Training](Recordings/2048_rndLocRndValwNormMask_1_2_and_3_training.PNG)
 
-After 215,000 games of 2048, this agent can win 4% (+/-3%) of rounds. 
-See winning game first row third column in video. 
+After 215,000 games of 2048, this agent can win 4% (+/-3%) of rounds. See a winning game first row third column in video. 
 [![Simplified 2048 Agent Full Game](https://img.youtube.com/vi/3NAvX7lpD5Q/0.jpg)](https://youtu.be/3NAvX7lpD5Q)
 
 ### Simple Rewards 
