@@ -6,18 +6,20 @@
       <a href="#about-the-project">About The Project</a>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#agent-design">Agent Design</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#Observation">Observation</a></li>
+        <li><a href="#Reward Function">Reward Function</a></li>
+        <li><a href="#Reward Function">Training</a></li>
       </ul>
     </li>
-    <li><a href="#Agent Design">Agent Design</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#agent-for-simplified-2048">Agent for Simplified 2048</a></li>
+    <li><a href="#Agent for 2048">Agent for 2048</a></li>
     <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#Getting Started">Getting Started</a></li>
+    <li><a href="#Resources">Resources</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
