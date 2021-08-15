@@ -28,7 +28,7 @@
 
 https://github.com/arturf1/2048/blob/main/Recordings/2048_training.mp4
 
-[Product Name Screen Shot](Recordings/2048_reward_functions.png)
+![Product Name Screen Shot](Recordings/2048_reward_functions.png)
 
 Last week I decided to build an AI agent for the game 2048. If you never played it before, 2048 is a puzzle game. Tiles with values of 2 or 4 spawn randomly on a 4 by 4 grid. On each turn, you choose to shift all of the tiles up, down, left or right. Tiles with the same value combine into one tile with sum of the original tiles. Tiles "4" and "4" will combine to create "8". Tiles "8" and "8" will combine to create "16". The goal of the game is to create a tile with value of 2048. You can try to play it yourself at: https://play2048.co/
 
