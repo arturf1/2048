@@ -1,5 +1,4 @@
-<!-- TABLE OF CONTENTS -->
-<details open="open">
+<details open="closed">
   <summary>Table of Contents</summary>
   <ol>
     <li>
@@ -8,18 +7,16 @@
     <li>
       <a href="#agent-design">Agent Design</a>
       <ul>
-        <li><a href="#Observation">Observation</a></li>
-        <li><a href="#Reward Function">Reward Function</a></li>
-        <li><a href="#Reward Function">Training</a></li>
+        <li><a href="#observation">Observation</a></li>
+        <li><a href="#reward-function">Reward Function</a></li>
+        <li><a href="#training">Training</a></li>
       </ul>
     </li>
     <li><a href="#agent-for-simplified-2048">Agent for Simplified 2048</a></li>
-    <li><a href="#Agent for 2048">Agent for 2048</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#Getting Started">Getting Started</a></li>
-    <li><a href="#Resources">Resources</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#agent-for-2048">Agent for 2048</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <li><a href="#resources">Resources</a></li>
+    <li><a href="#contact-and-license">Contact & License</a></li>
   </ol>
 </details>
 
@@ -60,9 +57,13 @@ Actions which do not change the state of the game are masked to prevent the agen
 
 The trickier part is the dynamics of the game. The tiles spawn in random locations and with random values. This makes it harder for the agent to learn a good combination of moves. Also, the game gets exponential harder. It is a lot harder to get tile with value of 512 than a tile of 256. Lastly, certain moves do not change the state of the game. This can lead to an agent getting stuck.
 
-For the initial proof-of-concept I simplified the game by only spawning tiles with value 2 and in deterministic locations. To handle the increasing difficulty, I designed a reward function to provide a reward for each time tiles are combined, each time a new high value tile is created, and for winning the game. There is also a penalty for each move which does not result in tiles combining. To prevent the agent from getting stuck, I mask each action which did not result in a change to the game gird in the previous move.
+For the initial proof-of-concept I simplified the game by only spawning tiles with value 2 and in deterministic locations. Tile spawn settings can be changed by selecting a game, and changing the settings for "Manager (Script)" in Inspector window of Unity Editor. To handle the increasing difficulty, I designed a reward function to provide a reward for each time tiles are combined, each time a new high value tile is created, and for winning the game. There is also a penalty for each move which does not result in tiles combining. To prevent the agent from getting stuck, I mask each action which did not result in a change to the game gird in the previous move.
 
-This agent is called deterLocDeterValwNormMask. Below is the training curve and a video of full game. 
+This agent is called deterLocDeterValwNormMask. Below is the command used to train, the training curve and a video of a full game played by the agent. Note: before training be sure that you have uncommented the desired reward function in Agent2048.cs as well set the desired game configuration in Unity Editor. 
+
+```sh
+   mlagents-learn config/trainer.yaml --run-id=deterLocDeterValwNormMask
+   ```
 
 ![Training Curve for Simplified 2048 Agent](Recordings/2048_simplified_deterLocDeterValwNormMask_training.PNG)
 
@@ -80,12 +81,25 @@ The original version is much harder.
 
 rndLocRndValwNormMaskColdStart\Play2048
 
+```sh
+   mlagents-learn config/trainer.yaml --run-id=rndLocRndValwNormMaskColdStart
+   ```
+   
 Agent trained from scratch and a fine-tuned agent converge onto the same strategy. They both move highest value tiles to one side.
 Grey: training on simplified 2048  
 Orange: fine tuning on original 2048 
 Blue: training agent on original 2048 
 ![Cold Start versus Fine Tune](Recordings/2048_coldstart_vs_finetune.PNG)
 
+```sh
+   mlagents-learn config/trainer.yaml --run-id=rndLocRndValwNormMask --initialize-from=deterLocDeterValwNormMask
+   ```
+```sh
+   mlagents-learn config/trainer_2.yaml --run-id=rndLocRndValwNormMask_2 --initialize-from=rndLocRndValwNormMask
+   ```
+```sh
+   mlagents-learn config/trainer_3.yaml --run-id=rndLocRndValwNormMask_3 --initialize-from=rndLocRndValwNormMask_2
+   ```
 rndLocRndValwNormMask\Play2048
 rndLocRndValwNormMask_2\Play2048
 rndLocRndValwNormMask_3\Play2048
@@ -112,38 +126,6 @@ Once the Engine and ML Agents extension are installed, clone the project reposit
 This project also uses the following assets, which are included in the project files. 
 * [2048 Project in Unity Asset Store](https://assetstore.unity.com/packages/templates/packs/2048-23088)
 * [Gridbox Prototype Materials](https://assetstore.unity.com/packages/2d/textures-materials/gridbox-prototype-materials-129127)
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
-   ```
-   
-## License
-
-MIT License
-
-## Contact
-
-[@arturf124](https://twitter.com/arturf124) | [LinkedIn](https://www.linkedin.com/in/filipowicza/)
 
 ## Resources
 
@@ -172,4 +154,10 @@ MIT License
 * [Is the game 2048 always solveable?](https://math.stackexchange.com/questions/720726/is-the-game-2048-always-solveable)
 
 * [2048 Game Strategy - How to Always Win at 2048](https://www.gameskinny.com/lnagr/2048-game-strategy-how-to-always-win-at-2048)
+
+## Contact and License
+
+[@arturf124](https://twitter.com/arturf124) | [LinkedIn](https://www.linkedin.com/in/filipowicza/)
+
+MIT License
 
