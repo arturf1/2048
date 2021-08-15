@@ -28,27 +28,59 @@
 
 https://user-images.githubusercontent.com/8249946/129461000-7ee95073-adc7-4552-99dd-881ba665d0d6.mp4
 
-![Product Name Screen Shot](Recordings/2048_reward_functions.PNG)
+If you never played it before, 2048 is a puzzle game. Tiles with values of 2 or 4 spawn randomly on a 4 by 4 grid. On each turn, you choose to shift all of the tiles up, down, left or right. Tiles with the same value combine into one tile with sum of the original tiles. Tiles "4" and "4" will combine to create "8". Tiles "8" and "8" will combine to create "16". The goal of the game is to create a tile with value of 2048. You can try to play it yourself at: https://play2048.co/
 
-Last week I decided to build an AI agent for the game 2048. If you never played it before, 2048 is a puzzle game. Tiles with values of 2 or 4 spawn randomly on a 4 by 4 grid. On each turn, you choose to shift all of the tiles up, down, left or right. Tiles with the same value combine into one tile with sum of the original tiles. Tiles "4" and "4" will combine to create "8". Tiles "8" and "8" will combine to create "16". The goal of the game is to create a tile with value of 2048. You can try to play it yourself at: https://play2048.co/
+## Agent Design 
 
-At first, I thought the challenging part will be designing an output for the agent. I thought that each tile can be moved individually. It turns out that there are only four actions. That makes the output of the agent very simple.
+### Observation 
+The game grid is represented as an array of 16 numbers. Each element is 0 if the cell is empty or log base-2 of the tile value times 1/11. The core idea is to evenly space out all of the tile values between 0 and 1.
+
+I did consider using one hot encoding. That would lead to a 16*12 input space, and most of the observation would be zero most of the time. Therefore, I did not try it. But it could be something to experiment with.
+
+### Reward Function 
+The are two reward functions. 
+
+The first function, used in most of the experiments, includes:
+* penalty for actions which do not increase the score
+* reward for every increase in total score
+* reward for every new highest tile found (discounted, see graph below)
+* reward for getting to 2048
+
+![Discounted reward for new highest tile found](Recordings/2048_reward_functions.PNG)
+
+The second function, also called Simple Reward, includes:
+* reward for every new highest tile found
+
+### Training
+
+The agent is a 4 layer FFN trained with PPO. In general, I set a small beta (0.001) for entropy, and a large buffer (12,800) as the agent will need to do a lot of exploration. Also, gamma is large (0.995) for the discount to make sure the agent is looking many moves ahead. For specific hyperparameter settings please see YAML files in the config folder. 
+
+Actions which do not change the state of the game are masked to prevent the agent from getting stuck. 
+
+## Agent for Simplified 2048
 
 The trickier part is the dynamics of the game. The tiles spawn in random locations and with random values. This makes it harder for the agent to learn a good combination of moves. Also, the game gets exponential harder. It is a lot harder to get tile with value of 512 than a tile of 256. Lastly, certain moves do not change the state of the game. This can lead to an agent getting stuck.
 
 For the initial proof-of-concept I simplified the game by only spawning tiles with value 2 and in deterministic locations. To handle the increasing difficulty, I designed a reward function to provide a reward for each time tiles are combined, each time a new high value tile is created, and for winning the game. There is also a penalty for each move which does not result in tiles combining. To prevent the agent from getting stuck, I mask each action which did not result in a change to the game gird in the previous move.
 
-### Built With
+![Training Curve for Simplified Agent](Recordings/2048_simplified_deterLocDeterValwNormMask_training.PNG)
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
+## Agent for 2048
+
+### Original Trial 
+
+### Simple Rewards 
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get started, first install Unity Game Engine from  https://unity.com/. This project also requires the ML Agents extension. Installation instructions can be found on the extension's Github, link below. 
+* [Unity ML Agents](https://github.com/Unity-Technologies/ml-agents)
+
+Once the Engine and ML Agents extension are installed, clone the project repository and import the project using Unity Hub. 
+
+This project also uses the following assets, which are included in the project files. 
+* [2048 Project in Unity Asset Store](https://assetstore.unity.com/packages/templates/packs/2048-23088)
+* [Gridbox Prototype Materials](https://assetstore.unity.com/packages/2d/textures-materials/gridbox-prototype-materials-129127)
 
 ### Prerequisites
 
@@ -73,19 +105,7 @@ This is an example of how to list things you need to use the software and how to
    ```JS
    const API_KEY = 'ENTER YOUR API';
    ```
-
-## Agent for Simplified 2048
-
-## Agent for 2048
-
-### Original Trial 
-
-### Simple Rewards 
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
+   
 ## License
 
 MIT License
