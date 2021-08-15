@@ -119,9 +119,12 @@ Since the cold start and pre-trained agents eventually learned at the same rate,
 ![Agent Training](Recordings/2048_rndLocRndValwNormMask_1_2_and_3_training.PNG)
 
 After 215,000 games of 2048, this agent can win 4% (+/-3%) of rounds. See a winning game first row third column in video. 
+
 [![Simplified 2048 Agent Full Game](https://img.youtube.com/vi/3NAvX7lpD5Q/0.jpg)](https://youtu.be/3NAvX7lpD5Q)
 
 ### Simple Rewards 
+
+I've noticed that the agent sometimes chooses to combine any tiles it can as oppose to work toward 2048. This is probably because there is a reward for increasing the overall score of the game. I will experiment with simplifying the reward function to just provide a reward each time a new value tile is formed. The first time the agent gets a tile of 16, it will get 16 reward, etc.
 
 ## Getting Started
 
