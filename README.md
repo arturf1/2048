@@ -126,6 +126,10 @@ After 215,000 games of 2048, this agent can win 4% (+/-3%) of rounds. See a winn
 
 I've noticed that the agent sometimes chooses to combine any tiles it can as oppose to work toward 2048. This is probably because there is a reward for increasing the overall score of the game. I will experiment with simplifying the reward function to just provide a reward each time a new value tile is formed. The first time the agent gets a tile of 16, it will get 16 reward, etc.
 
+```sh
+   mlagents-learn config/trainer_rndLocRndValNormwMaskSimpleReward.yaml --run-id=rndLocRndValNormwMaskSimpleReward
+   ```
+
 ## Getting Started
 
 To get started, first install Unity Game Engine from  https://unity.com/. This project also requires the ML Agents extension. Installation instructions can be found on the extension's Github, link below. 
