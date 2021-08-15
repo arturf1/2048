@@ -4,9 +4,6 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -15,7 +12,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#Agent Design">Agent Design</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -63,11 +60,43 @@ The trickier part is the dynamics of the game. The tiles spawn in random locatio
 
 For the initial proof-of-concept I simplified the game by only spawning tiles with value 2 and in deterministic locations. To handle the increasing difficulty, I designed a reward function to provide a reward for each time tiles are combined, each time a new high value tile is created, and for winning the game. There is also a penalty for each move which does not result in tiles combining. To prevent the agent from getting stuck, I mask each action which did not result in a change to the game gird in the previous move.
 
-![Training Curve for Simplified Agent](Recordings/2048_simplified_deterLocDeterValwNormMask_training.PNG)
+This agent is called deterLocDeterValwNormMask. Below is the training curve and a video of full game. 
+
+![Training Curve for Simplified 2048 Agent](Recordings/2048_simplified_deterLocDeterValwNormMask_training.PNG)
+
+[![Simplified 2048 Agent Full Game](https://img.youtube.com/vi/eQf2c7eh8LM/0.jpg)](https://youtu.be/eQf2c7eh8LM)
 
 ## Agent for 2048
 
-### Original Trial 
+### Complex Rewards 
+
+Agent training curve for simplified 2048 (grey). 
+Fine tuning that agent on original 2048 (orange). 
+The original version is much harder. 
+
+![Simplified versus Original 2048 Training Curves](Recordings/2048_deterLocDeterValwNormMask-vs-rndLocRndValwNormMask_training.PNG)
+
+rndLocRndValwNormMaskColdStart\Play2048
+
+Agent trained from scratch and a fine-tuned agent converge onto the same strategy. They both move highest value tiles to one side.
+Grey: training on simplified 2048  
+Orange: fine tuning on original 2048 
+Blue: training agent on original 2048 
+![Cold Start versus Fine Tune](Recordings/2048_coldstart_vs_finetune.PNG)
+
+rndLocRndValwNormMask\Play2048
+rndLocRndValwNormMask_2\Play2048
+rndLocRndValwNormMask_3\Play2048
+
+Training curves for fine tuning an agent to play 2048.  
+Orange: First round  33M steps
+Red: Second round 50M steps
+Blue: Third round 12M steps
+![Agent Training](Recordings/2048_rndLocRndValwNormMask_1_2_and_3_training.PNG)
+
+After 215,000 games of 2048, this agent can win 4% (+/-3%) of rounds. 
+See winning game first row third column in video. 
+[![Simplified 2048 Agent Full Game](https://img.youtube.com/vi/3NAvX7lpD5Q/0.jpg)](https://youtu.be/3NAvX7lpD5Q)
 
 ### Simple Rewards 
 
