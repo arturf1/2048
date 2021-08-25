@@ -127,7 +127,7 @@ Since the cold start and pre-trained agents eventually learned at the same rate,
 
 After 215,000 games of 2048, the agent can win 4% (+/-3%) of rounds. See a winning game first row third column in the video below. 
 
-[![Simplified 2048 Agent Full Game](https://img.youtube.com/vi/3NAvX7lpD5Q/0.jpg)](https://youtu.be/3NAvX7lpD5Q)
+[![2048 Agent Full Game](https://img.youtube.com/vi/3NAvX7lpD5Q/0.jpg)](https://youtu.be/3NAvX7lpD5Q)
 
 ### Simple Rewards 
 
@@ -136,6 +136,12 @@ It appears that the agent (rndLocRndValwNormMask_3) sometimes chooses to combine
 ```sh
    mlagents-learn config/trainer_rndLocRndValNormwMaskSimpleReward.yaml --run-id=rndLocRndValNormwMaskSimpleReward
    ```
+
+After 450,000 games of 2048, this agent can win 37% (+/-9%) of rounds. See a winning game in the video below. A simple reward and enough training steps can lead to a fairly good result. The training curves indicates that the performance would improve with more time.    
+
+![Agent Training](Recordings/2048_rndLocRndValNormwMaskSimpleReward_training.PNG)
+
+[![2048 Agent Full Game Simple Rewards](https://img.youtube.com/vi/nDqsQHU2AXo/0.jpg)](https://youtu.be/nDqsQHU2AXo)
 
 ## Getting Started
 
