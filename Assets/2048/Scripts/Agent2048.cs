@@ -14,10 +14,13 @@ public class Agent2048 : Agent
     
     Agent m_Agent;
 
+    // agent's stats 
     public int wins = 0;
     public int losses = 0;
     public int gamesPlayed = 0;
 
+    // variables which store the previous state of the game 
+    // they are used for computing rewards and masking actions
     private float prevScore = 0f;
     private float prevMax = 0f; 
     private int prevAction = -1;
@@ -35,7 +38,7 @@ public class Agent2048 : Agent
         if (gameManager.done && !gameManager.gameOver && gameManager.go == true) {
             m_Agent.RequestDecision();
 		}
-
+        
         if (gameManager.winner) {
             wins += 1;
             gamesPlayed += 1;
@@ -67,16 +70,12 @@ public class Agent2048 : Agent
         for (int i = 0; i < gameManager.grid.GetLength(0); i++)
             for (int j = 0; j < gameManager.grid.GetLength(1); j++)
                 if(gameManager.grid[i,j] != null) {
-                    //sensor.AddObservation(gameManager.grid[i, j].tileValue);
                     int v = (int)Math.Log(gameManager.grid[i, j].tileValue,2f);
                     sensor.AddObservation((1f/11f)*v);
                 }
                 else {
                     sensor.AddObservation(0f);
                 }
-
-        //string observation = string.Join(",", m_Agent.GetObservations());
-        //Debug.Log(observation);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -139,6 +138,7 @@ public class Agent2048 : Agent
         }
     }
 
+    // Helper function which finds the highest value tile in the current game gird
     private float FindMaxTileValue() {
         float max = 0f; 
 
@@ -151,6 +151,7 @@ public class Agent2048 : Agent
         return max; 
     }
 
+    // Helper function which checks if gameManager.grid is different from agent's prevGrid
     private bool gridChanged() {
         for (int i = 0; i < gameManager.grid.GetLength(0); i++)
             for (int j = 0; j < gameManager.grid.GetLength(1); j++)
@@ -161,6 +162,7 @@ public class Agent2048 : Agent
         return false;
     }
 
+    // Helper function which stores gameManager.grid into agent's prevGrid
     private void recordGrid() {
         for (int i = 0; i < gameManager.grid.GetLength(0); i++)
             for (int j = 0; j < gameManager.grid.GetLength(1); j++)

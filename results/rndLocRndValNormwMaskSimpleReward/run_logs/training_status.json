@@ -2,58 +2,58 @@
     "Play2048": {
         "checkpoints": [
             {
-                "steps": 11499809,
-                "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-11499809.onnx",
-                "reward": 646.3448275862069,
-                "creation_time": 1628805560.371193,
+                "steps": 248499307,
+                "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-248499307.onnx",
+                "reward": 3362.0,
+                "creation_time": 1629851551.4296513,
                 "auxillary_file_paths": [
-                    "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-11499809.pt"
+                    "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-248499307.pt"
                 ]
             },
             {
-                "steps": 11999738,
-                "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-11999738.onnx",
-                "reward": 555.8181818181819,
-                "creation_time": 1628807822.1756883,
+                "steps": 248999870,
+                "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-248999870.onnx",
+                "reward": 2697.2727272727275,
+                "creation_time": 1629854312.0636222,
                 "auxillary_file_paths": [
-                    "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-11999738.pt"
+                    "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-248999870.pt"
                 ]
             },
             {
-                "steps": 12499469,
-                "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-12499469.onnx",
-                "reward": 546.4242424242424,
-                "creation_time": 1628810541.8178527,
+                "steps": 249499813,
+                "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-249499813.onnx",
+                "reward": 2046.0,
+                "creation_time": 1629857815.237996,
                 "auxillary_file_paths": [
-                    "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-12499469.pt"
+                    "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-249499813.pt"
                 ]
             },
             {
-                "steps": 12999817,
-                "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-12999817.onnx",
-                "reward": 509.3333333333333,
-                "creation_time": 1628813217.201115,
+                "steps": 249999719,
+                "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-249999719.onnx",
+                "reward": 2558.0,
+                "creation_time": 1629859890.613181,
                 "auxillary_file_paths": [
-                    "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-12999817.pt"
+                    "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-249999719.pt"
                 ]
             },
             {
-                "steps": 13360106,
-                "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-13360106.onnx",
-                "reward": 607.9230769230769,
-                "creation_time": 1628814637.5409591,
+                "steps": 250000695,
+                "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-250000695.onnx",
+                "reward": 2865.2,
+                "creation_time": 1629859890.758793,
                 "auxillary_file_paths": [
-                    "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-13360106.pt"
+                    "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-250000695.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 13360106,
+            "steps": 250000695,
             "file_path": "results\\rndLocRndValNormwMaskSimpleReward\\Play2048.onnx",
-            "reward": 607.9230769230769,
-            "creation_time": 1628814637.5409591,
+            "reward": 2865.2,
+            "creation_time": 1629859890.758793,
             "auxillary_file_paths": [
-                "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-13360106.pt"
+                "results\\rndLocRndValNormwMaskSimpleReward\\Play2048\\Play2048-250000695.pt"
             ]
         }
     },

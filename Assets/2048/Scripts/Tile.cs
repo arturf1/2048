@@ -45,9 +45,6 @@ public class Tile : MonoBehaviour {
 				Change(tileValue * 2); // new value
 				combine = false;
 				grow = true;
-				// destroy our cell after it has combined with other
-				//Destroy(cTile.textFab);
-				//Destroy(cTile.gameObject);
 				cTile.delete();
 				// play a sound when cell combines with another
 				GetComponent<AudioSource>().PlayOneShot(FX, 1.0f);
@@ -71,10 +68,7 @@ public class Tile : MonoBehaviour {
 		tileValue = newValue;
 		// after combination we change tile's colour
 		GetComponent<SpriteRenderer>().color = Manager.tileColors [Mathf.RoundToInt(Mathf.Log (tileValue, 2) - 1)];
-		//textFab.GetComponent<GUIText>().text = tileValue.ToString();
 		textFab.text = tileValue.ToString();
-		// colour value which is written on our cell
-		//textFab.GetComponent<GUIText>().color = new Color (0.17f, 0.17f, 0.27f);
 	}
 
 	public bool Move (int x, int y) {
