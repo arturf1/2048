@@ -176,6 +176,14 @@ This project also uses the following assets, which are included in the project f
 
 * [2048](https://play2048.co/)
 
+* [The Mathematics of 2048: Minimum Moves to Win with Markov Chains](https://jdlm.info/articles/2017/08/05/markov-chain-2048.html)
+
+* [The Mathematics of 2048: Counting States with Combinatorics](https://jdlm.info/articles/2017/09/17/counting-states-combinatorics-2048.html)
+
+* [The Mathematics of 2048: Counting States by Exhaustive Enumeration](https://jdlm.info/articles/2017/12/10/counting-states-enumeration-2048.html)
+
+* [The Mathematics of 2048: Optimal Play with Markov Decision Processes](https://jdlm.info/articles/2018/03/18/markov-decision-process-2048.html)
+
 * [Is every game of 2048 winnable? If not, what are the odds of any game being winnable, given perfect play?](https://www.quora.com/Is-every-game-of-2048-winnable-If-not-what-are-the-odds-of-any-game-being-winnable-given-perfect-play)
 
 * [Is the game 2048 always solveable?](https://math.stackexchange.com/questions/720726/is-the-game-2048-always-solveable)
